@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/logang-bot/seminarioRest/issues"
   },
-  "homepage": "https://github.com/logang-bot/seminarioRest#readme"
+  "homepage": "https://github.com/logang-bot/seminarioRest#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.21"
+  }
 }
