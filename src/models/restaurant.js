@@ -2,23 +2,22 @@ const mongoose= require('mongoose');
 const RESTAURANTSCHEMA= new mongoose.Schema({
     nombre: {
         type: String,
-        default: "SIN NOMBRE",
         required: [true, "El nombre del restaurant es requerido"]
     },
     nit:{
-        type: Number,
-        default: "SIN NIT"
+        type: String,
+        default: ""
     } ,
-
     propietario:{
         type: String,
         required: [true,"El nombre del propietario es requerido"]
     } ,
     calle: {
         type: String,
+        required: [true, "La calle es requerida"]
     },
     telefono: {
-        type: Number
+        type: String
     },
     log: {
         type: String,
@@ -28,13 +27,22 @@ const RESTAURANTSCHEMA= new mongoose.Schema({
     },
     logo:{
         type: String,
+        default: ""
     },
     fechaRegistro:{
         type: Date,
+        default: Date.now
     },
     fotoLugar:{
-        type: 
-    }
-
-
+        type: String,
+        default: ""
+    },
+    idPropietario:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user"
+    },
+    menus:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "menu"
+    }]
 })
