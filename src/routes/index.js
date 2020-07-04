@@ -1,7 +1,8 @@
 const router=require('express').Router()
+const {user} = require('../controllers')
 
-
-
+router.get('/user', user.index)
+router.post('/user/signUp', user.signUp)
 
 
 
