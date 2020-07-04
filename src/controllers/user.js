@@ -27,5 +27,17 @@ ctrl.signUp = async (req,res)=>{
         }
     }
 }
+ctrl.logIn= (req,res)=>{
+    const{name, email, password, confirm_password} = req.body
+
+}
+ctrl.update= (req,res)=>{
+    
+}
+
+ctrl.delete= (req,res)=>{
+    
+}
+
 
 module.exports = ctrl
