@@ -21,3 +21,4 @@ const  ORDENSCHEMA= mongoose.Schema({
         type: Number
     }
 })
+module.exports= mongoose.model("orden",ORDENSCHEMA)

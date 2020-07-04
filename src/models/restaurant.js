@@ -1,4 +1,5 @@
 const mongoose= require('mongoose');
+const { restaurant } = require('.');
 const RESTAURANTSCHEMA= new mongoose.Schema({
     nombre: {
         type: String,
@@ -46,3 +47,5 @@ const RESTAURANTSCHEMA= new mongoose.Schema({
         ref: "menu"
     }]
 })
+
+module.exports= mongoose.model("restaurant",RESTAURANTSCHEMA)
