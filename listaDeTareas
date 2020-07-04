@@ -39,7 +39,8 @@ POST, PUT, PATCH, GET, DELETE
 
 El Restaurant debe contar con los siguientes atributos, 
 
-Nombre, Nit, Propietario, Calle, Telefono, Log, Lat, Logo, fechaderegistro, fotolugar
+Nombre, Nit, Propietario, Calle, Telefono, Log, Lat, 
+Logo, fechaderegistro, fotolugar
 
 
 2. Creación de Menus
