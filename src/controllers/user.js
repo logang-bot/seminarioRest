@@ -1,5 +1,6 @@
 const ctrl  = {}
 const {user} = require('../models')
+const passport = require('passport')
 
 ctrl.index = async (req,res)=>{
     const usrs  = await user.find({})
@@ -27,10 +28,12 @@ ctrl.signUp = async (req,res)=>{
         }
     }
 }
-ctrl.logIn= (req,res)=>{
-    const{name, email, password, confirm_password} = req.body
+ctrl.logIn= passport.authenticate('local',{
+    successRedirect: '/res',
+    failureRedirect: '/',
+    failureFlash: true
+})
 
-}
 ctrl.update= (req,res)=>{
     
 }

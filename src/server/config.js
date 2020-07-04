@@ -10,6 +10,8 @@ const path = require('path')
 
 const app =express()
 
+require('../config/passport')
+
 app.set('port',process.env.PORT || 8000);
 
 
