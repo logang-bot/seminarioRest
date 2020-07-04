@@ -7,6 +7,7 @@ const routes = require('../routes')
 const path = require('path')
 
 
+
 const app =express()
 
 app.set('port',process.env.PORT || 8000);
@@ -27,9 +28,12 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use("/",routes)
+
 //static 
 
 app.use('/public', express.static(path.join(__dirname, '../public')))
+
 
 module.exports = app
 
