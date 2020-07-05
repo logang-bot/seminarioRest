@@ -1,6 +1,6 @@
 const ctrl  = {}
 const {user} = require('../models')
-const passport = require('passport')
+const restaurant = require('../models/restaurant')
 
 ctrl.index = async (req,res)=>{
     const usrs  = await user.find({})
@@ -28,18 +28,52 @@ ctrl.signUp = async (req,res)=>{
         }
     }
 }
-ctrl.logIn= passport.authenticate('local',{
-    successRedirect: '/res',
-    failureRedirect: '/',
-    failureFlash: true
-})
+ctrl.logIn= (req,res)=>{
+    const{name, email, password, confirm_password} = req.body
 
+}
 ctrl.update= (req,res)=>{
-    
+    if(!req.body.content){
+        return res.status(400).send({
+            message: "contenido no puede ser enviado"
+        })
+    }
+    user.findByIdAndUpdate(req.params.userId,{
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        restaurant: req.body.restaurant
+    },{new: true}) //metodo para retornar el documento modificado
+    .then(user =>{
+        if(!user){
+            return res.status(404).send({
+                message: "usuario no encontrado con el id " +req.params.userId
+            });
+        }
+        res.send(user);
+    }).catch(err =>{
+        return res.status(500).send({
+            message: "error actualizando datos con el ID"
+        })
+    });
+
+
+
 }
 
 ctrl.delete= (req,res)=>{
-    
+    user.findByIdAndRemove(req.params.userId)
+    .then(user => {
+        if(!user){
+            return res.status(404).send({
+                message: "usuario no encontrado con el id" +req.params.userId
+            })
+        }
+    }).catch(err =>{
+        return res.status(500).send({
+            message: "no se pudo eliminar con el id" + req.params.userId
+        })
+    })
 }
 
 
